@@ -1,0 +1,9 @@
+sudo: required #for docker execution
+services:
+  - docker #Travis CI will install docker into a build container
+
+before_install:
+  - docker build -t stefaniteratec/udemy-docker-react -f Dockerfile.dev . #remember that you will get an image ID, therefore tag image
+
+script:
+  - docker run -e CI=true stefaniteratec/udemy-docker-react npm run test -- --coverage
