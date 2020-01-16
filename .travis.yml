@@ -1,9 +1,25 @@
-sudo: required #for docker execution
+sudo: required # for docker execution
 services:
-  - docker #Travis CI will install docker into a build container
+  - docker # Travis CI will install docker into a build container
 
 before_install:
-  - docker build -t stefaniteratec/udemy-docker-react -f Dockerfile.dev . #remember that you will get an image ID, therefore tag image
+  - docker build -t stefaniteratec/udemy-docker-react -f Dockerfile.dev . # remember that you will get an image ID, therefore tag image
 
 script:
   - docker run -e CI=true stefaniteratec/udemy-docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk # TravisCI preconfiguration
+  region: "us-east-2" # taken from auto-generated URL of Service in Elastic Beanstalk
+  app: "udemy-docker-react" # name is the same as in Elastic Beanstalk config
+  env: "UdemyDockerReact-env" # environment is the same as in Elastic Beanstalk config (auto-generated)
+  bucket_name: "elasticbeanstalk-us-east-2-717481444932" # S3 Bucket in AWS where Travis CI puts ZIP file to. Look at S3 in AWS console
+  bucket_path: "udemy-docker-react" # equal to app name
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+    # user was created via AWS console IAM
+    # Access and Secret Key were added into Travis CI console as Environment Variables
