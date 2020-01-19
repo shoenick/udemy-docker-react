@@ -1,5 +1,5 @@
 
-This Repository contains sources for the Udemy course https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/ chapters 6 and 7.
+This Repository contains sources for the Udemy course https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/ chapters 6 and 7. The Travis CI pipeline is configured at https://travis-ci.org/shoenick/udemy-docker-react.
 
 -----
 

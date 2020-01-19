@@ -1,3 +1,4 @@
+# Pipeline Configuration: https://travis-ci.org/shoenick/udemy-docker-react
 sudo: required # for docker execution
 services:
   - docker # Travis CI will install docker into a build container
