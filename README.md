@@ -1,3 +1,9 @@
+
+This Repository contains sources for the Udemy course https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/ chapters 6 and 7.
+
+-----
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
